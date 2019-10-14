@@ -1,0 +1,9 @@
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\CarpoolManagement.Core.deps.json
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\CarpoolManagement.Core.dll
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\CarpoolManagement.Core.pdb
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.csprojAssemblyReference.cache
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.csproj.CoreCompileInputs.cache
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.AssemblyInfoInputs.cache
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.AssemblyInfo.cs
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.dll
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.pdb

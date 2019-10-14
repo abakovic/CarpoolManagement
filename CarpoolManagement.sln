@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarpoolManagement", "CarpoolManagement\CarpoolManagement.csproj", "{FD621649-BA88-4E37-8DC4-D273F32E5EDB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{03F5BE3A-D993-48A8-8006-7079BA9A2B0D} = {03F5BE3A-D993-48A8-8006-7079BA9A2B0D}
+		{1180ADBF-70E8-4B49-95C8-D4EF48FB3C7C} = {1180ADBF-70E8-4B49-95C8-D4EF48FB3C7C}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarpoolManagement.Data", "CarpoolManagement.Data\CarpoolManagement.Data.csproj", "{1180ADBF-70E8-4B49-95C8-D4EF48FB3C7C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarpoolManagement.Core", "CarpoolManagement.Core\CarpoolManagement.Core.csproj", "{03F5BE3A-D993-48A8-8006-7079BA9A2B0D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1180ADBF-70E8-4B49-95C8-D4EF48FB3C7C} = {1180ADBF-70E8-4B49-95C8-D4EF48FB3C7C}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD621649-BA88-4E37-8DC4-D273F32E5EDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD621649-BA88-4E37-8DC4-D273F32E5EDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD621649-BA88-4E37-8DC4-D273F32E5EDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD621649-BA88-4E37-8DC4-D273F32E5EDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1180ADBF-70E8-4B49-95C8-D4EF48FB3C7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1180ADBF-70E8-4B49-95C8-D4EF48FB3C7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1180ADBF-70E8-4B49-95C8-D4EF48FB3C7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1180ADBF-70E8-4B49-95C8-D4EF48FB3C7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03F5BE3A-D993-48A8-8006-7079BA9A2B0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03F5BE3A-D993-48A8-8006-7079BA9A2B0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03F5BE3A-D993-48A8-8006-7079BA9A2B0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03F5BE3A-D993-48A8-8006-7079BA9A2B0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {07D56744-E466-43DF-B525-97AD56ED0AAB}
+	EndGlobalSection
+EndGlobal
