@@ -1,4 +1,4 @@
-﻿@model CarpoolManagement.Data.Entities.RideSharing
+﻿@model CarpoolManagement.Core.ViewModels.RideViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -35,8 +35,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="CarId" class="control-label"></label>
-                <select asp-for="CarId" class="form-control" asp-items="ViewBag.CarId"></select>
-                <span asp-validation-for="CarId" class="text-danger"></span>
+                <select asp-for="CarId" class="form-control" asp-items="@Model.Cars"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeIds" class="control-label"></label>
+                <select asp-for="EmployeeIds" class="form-control" asp-items="@Model.Employees"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

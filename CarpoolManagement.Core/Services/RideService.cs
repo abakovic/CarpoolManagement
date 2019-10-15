@@ -1,6 +1,7 @@
-﻿using CarpoolManagement.Data.CarpoolManagementContext;
+﻿using CarpoolManagement.Core.ViewModels;
+using CarpoolManagement.Data.CarpoolManagementContext;
 using CarpoolManagement.Data.Entities;
-using CarpoolManagement.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,8 @@ namespace CarpoolManagement.Core.Services
 {
     public interface IRideService
     {
-        List<RideSharing> GetRidesByDate(DateTime date);
+        RideViewModel GetEmptyVM();
+        List<RideViewModel> GetRidesByDate(DateTime date);
         Task<RideViewModel> GetViewModelByIdAsync(long id);
         Task CreateAsync(RideViewModel rideVM);
         Task UpdateAsync(RideViewModel rideVM);
@@ -28,19 +30,52 @@ namespace CarpoolManagement.Core.Services
             this.dbContext = dbContext;
         }
 
-        public List<RideSharing> GetRidesByDate (DateTime date)
+        public RideViewModel GetEmptyVM()
+        {
+            var dbModel = GetEntity();
+            var dbCars = dbContext.Set<Carpool>().AsNoTracking().ToList();
+            var selectCars = dbCars.Select(x =>
+            {
+                return new SelectListItem { Text = x.Name, Value = x.Id.ToString() };
+            }).ToList();
+            var dbEmployees = dbContext.Set<Employee>().AsNoTracking().ToList();
+            var selectEmployees = dbEmployees.Select(x =>
+            {
+                return new SelectListItem { Text = x.EmployeeName, Value = x.Id.ToString() };
+            }).ToList();
+
+            return mapRide(dbModel, selectCars, selectEmployees);
+        }
+        public List<RideViewModel> GetRidesByDate (DateTime date)
         {
             var monthStart = new DateTime(date.Year, date.Month, 1);
             var monthEnd = monthStart.AddMonths(1).AddDays(-1);
+            var rides = GetAll().Include(x => x.Car).Include(x => x.EmployeeRides).ThenInclude(x => x.Employee).Where(x => x.StartDate.Date <= monthEnd && x.EndDate.Date >= monthStart).ToList();
+            var ridesVM = rides.Select(x => mapRide(x, new List<SelectListItem>(), new List<SelectListItem>())).ToList();
 
-            return GetAll().Where(x => x.StartDate.Date <= monthEnd && x.EndDate.Date >= monthStart).ToList();
+            return ridesVM;
         }
 
         public async Task<RideViewModel> GetViewModelByIdAsync(long id)
         {
-            var ride = await GetByIdAsync(id);
-            var vM = ride != null ? mapRide(ride) : new RideViewModel();
-            return vM;
+            var ride = await dbContext.Set<RideSharing>()
+               .AsNoTracking()
+               .Include(x => x.Car)
+               .Include(x => x.EmployeeRides).ThenInclude(x => x.Employee)
+               .FirstOrDefaultAsync(e => e.Id == id);
+            var selectCars = dbContext.Set<Carpool>().AsNoTracking().ToList().Select(x =>
+            {
+                return new SelectListItem { Text = x.Name, Value = x.Id.ToString() };
+            }).ToList();
+            var selectEmployees = dbContext.Set<Employee>().AsNoTracking().ToList().Select(x =>
+            {
+                return new SelectListItem { Text = x.EmployeeName, Value = x.Id.ToString() };
+            }).ToList();
+            if (ride != null)
+            {
+                return mapRide(ride, selectCars, selectEmployees);
+            }
+            return new RideViewModel();
         }
 
         public async Task CreateAsync(RideViewModel rideVM)
@@ -82,9 +117,10 @@ namespace CarpoolManagement.Core.Services
             return ride;
         }
 
-        private RideViewModel mapRide(RideSharing ride)
+        private RideViewModel mapRide(RideSharing ride, List<SelectListItem> cars, List<SelectListItem> employees)
         {
-            return new RideViewModel
+            var employeeNames = ride?.EmployeeRides?.Select(x => x.Employee.EmployeeName) ?? new List<string> { "" };
+            return ride.Id > 0 ? new RideViewModel
             {
                 Id = ride.Id,
                 StartLocation = ride.StartLocation,
@@ -92,8 +128,12 @@ namespace CarpoolManagement.Core.Services
                 StartDate = ride.StartDate,
                 EndDate = ride.EndDate,
                 CarId = ride.CarId,
-                EmployeeIds = ride.EmployeeRides.Select(x => x.EmployeeId).ToArray()
-            };
+                CarName = ride.Car.Name,
+                EmployeeIds = ride.EmployeeRides.Select(x => x.EmployeeId).ToArray(),
+                EmployeeNames = string.Join(", ", employeeNames),
+                Cars = cars,
+                Employees = employees
+            } : new RideViewModel { Cars = cars, Employees = employees };
         }
 
     }

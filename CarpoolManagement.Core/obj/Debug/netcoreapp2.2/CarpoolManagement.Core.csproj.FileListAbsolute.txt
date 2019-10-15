@@ -12,3 +12,17 @@ C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\n
 C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.csproj.CopyComplete
 C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.ViewFeatures.dll
 C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.ViewFeatures.xml
+C:\Users\Ante\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\CarpoolManagement.Core.deps.json
+C:\Users\Ante\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\CarpoolManagement.Core.dll
+C:\Users\Ante\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\CarpoolManagement.Core.pdb
+C:\Users\Ante\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\CarpoolManagement.Data.dll
+C:\Users\Ante\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.ViewFeatures.dll
+C:\Users\Ante\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\CarpoolManagement.Data.pdb
+C:\Users\Ante\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.ViewFeatures.xml
+C:\Users\Ante\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.csprojAssemblyReference.cache
+C:\Users\Ante\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.csproj.CoreCompileInputs.cache
+C:\Users\Ante\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.AssemblyInfoInputs.cache
+C:\Users\Ante\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.AssemblyInfo.cs
+C:\Users\Ante\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.csproj.CopyComplete
+C:\Users\Ante\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.dll
+C:\Users\Ante\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.pdb

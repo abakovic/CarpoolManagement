@@ -10,6 +10,7 @@ namespace CarpoolManagement.Data.CarpoolManagementContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
+            //TODO: avoid cannot open database error
             options.UseSqlite(@"Data Source=C:\test\ride.db");
         }
 

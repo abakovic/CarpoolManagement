@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CarpoolManagement.Models
+namespace CarpoolManagement.Core.ViewModels
 {
     public class RideViewModel
     {
@@ -16,8 +16,10 @@ namespace CarpoolManagement.Models
         public DateTime EndDate { get; set; }
 
         public long CarId { get; set; }
-        public SelectList Cars { get; set; }
+        public IEnumerable<SelectListItem> Cars { get; set; }
+        public string CarName { get; set; }
         public long[] EmployeeIds { get; set; }
-        public MultiSelectList Employees { get; set; }
+        public IEnumerable<SelectListItem> Employees { get; set; }
+        public string EmployeeNames { get; set; }
     }
 }

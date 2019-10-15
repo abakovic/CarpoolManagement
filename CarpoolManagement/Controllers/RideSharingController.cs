@@ -9,6 +9,7 @@ using CarpoolManagement.Data.CarpoolManagementContext;
 using CarpoolManagement.Data.Entities;
 using CarpoolManagement.Core.Services;
 using CarpoolManagement.Models;
+using CarpoolManagement.Core.ViewModels;
 
 namespace CarpoolManagement.Controllers
 {
@@ -45,19 +46,20 @@ namespace CarpoolManagement.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var viewModel = rideService.GetEmptyVM();
+            return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,StartLocation,EndLocation,StartDate,EndDate,CarId")] RideViewModel rideSharing)
+        public async Task<IActionResult> Create([Bind("Id,StartLocation,EndLocation,StartDate,EndDate,CarId,EmployeeIds")] RideViewModel rideSharing)
         {
             if (ModelState.IsValid)
             {
                 await rideService.CreateAsync(rideSharing);
                 return RedirectToAction(nameof(Index));
             }
-            return View(rideSharing);
+            return View("Index");
         }
 
         public async Task<IActionResult> Edit(long? id)
@@ -77,7 +79,7 @@ namespace CarpoolManagement.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,StartLocation,EndLocation,StartDate,EndDate,CarId")] RideViewModel rideSharing)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,StartLocation,EndLocation,StartDate,EndDate,CarId,EmployeeIds")] RideViewModel rideSharing)
         {
             if (id != rideSharing.Id)
             {
@@ -103,7 +105,7 @@ namespace CarpoolManagement.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(rideSharing);
+            return View("Index");
         }
 
         public async Task<IActionResult> Delete(long? id)
