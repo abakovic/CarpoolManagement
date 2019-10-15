@@ -30,3 +30,10 @@ C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement\obj\Debug\netcor
 C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement\obj\Debug\netcoreapp2.2\CarpoolManagement.csproj.CopyComplete
 C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement\bin\Debug\netcoreapp2.2\CarpoolManagement.Data.dll
 C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement\bin\Debug\netcoreapp2.2\CarpoolManagement.Data.pdb
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement\bin\Debug\netcoreapp2.2\CarpoolManagement.Core.dll
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement\bin\Debug\netcoreapp2.2\CarpoolManagement.Core.pdb
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement\obj\Debug\netcoreapp2.2\Razor\Views\RideSharing\Create.g.cshtml.cs
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement\obj\Debug\netcoreapp2.2\Razor\Views\RideSharing\Delete.g.cshtml.cs
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement\obj\Debug\netcoreapp2.2\Razor\Views\RideSharing\Details.g.cshtml.cs
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement\obj\Debug\netcoreapp2.2\Razor\Views\RideSharing\Edit.g.cshtml.cs
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement\obj\Debug\netcoreapp2.2\Razor\Views\RideSharing\Index.g.cshtml.cs

@@ -7,3 +7,8 @@ C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\n
 C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.AssemblyInfo.cs
 C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.dll
 C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.pdb
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\CarpoolManagement.Data.dll
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\CarpoolManagement.Data.pdb
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\obj\Debug\netcoreapp2.2\CarpoolManagement.Core.csproj.CopyComplete
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.ViewFeatures.dll
+C:\Users\buceb\source\repos\CarpoolManagement\CarpoolManagement.Core\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.ViewFeatures.xml

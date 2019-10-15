@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CarpoolManagement.Data.Entities
 {
-    public class Carpool
+    public class Carpool : IEntity
     {
         public long Id { get; set; }
         public string Name { get; set; }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CarpoolManagement.Data.Entities
 {
-    public class RideSharing
+    public class RideSharing : IEntity
     {
         public long Id { get; set; }
         public string StartLocation { get; set; }

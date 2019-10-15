@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CarpoolManagement.Core.Services;
 using CarpoolManagement.Data.CarpoolManagementContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +37,7 @@ namespace CarpoolManagement
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<CarpoolContext>();
+            services.AddTransient<IRideService, RideService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,11 +64,6 @@ namespace CarpoolManagement
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-            using (var db = new CarpoolContext())
-            {
-                db.Database.EnsureCreated();
-                db.Database.Migrate();
-            }
 
             SeedData.SeedInitialData();
         }

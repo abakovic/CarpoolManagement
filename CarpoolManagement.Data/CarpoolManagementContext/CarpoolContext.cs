@@ -10,7 +10,7 @@ namespace CarpoolManagement.Data.CarpoolManagementContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlite(@"Data Source=test\ride.db");
+            options.UseSqlite(@"Data Source=C:\test\ride.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

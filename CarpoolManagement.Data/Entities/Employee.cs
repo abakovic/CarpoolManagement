@@ -5,9 +5,9 @@ using System.Text;
 
 namespace CarpoolManagement.Data.Entities
 {
-    public class Employee
+    public class Employee : IEntity
     {
-        public long EmployeeId { get; set; }
+        public long Id { get; set; }
         public string EmployeeName { get; set; }
         public bool IsDriver { get; set; }
 
