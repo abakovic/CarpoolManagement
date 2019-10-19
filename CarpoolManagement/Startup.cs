@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CarpoolManagement.Core.Services;
+﻿using CarpoolManagement.Core.Services;
+using CarpoolManagement.Core.Validators;
+using CarpoolManagement.Core.ViewModels;
 using CarpoolManagement.Data.CarpoolManagementContext;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -35,9 +33,10 @@ namespace CarpoolManagement
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation();
             services.AddDbContext<CarpoolContext>();
             services.AddTransient<IRideService, RideService>();
+            services.AddTransient<IValidator<RideViewModel>, RideValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

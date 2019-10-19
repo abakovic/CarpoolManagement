@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CarpoolManagement.Core.Services
@@ -15,6 +14,10 @@ namespace CarpoolManagement.Core.Services
     {
         RideViewModel GetEmptyVM();
         List<RideViewModel> GetRidesByDate(DateTime date);
+        List<RideSharing> GetRidesByCarIdAndDates(long carId, DateTime startDate, DateTime endDate);
+        Task<bool> CheckCarSeats(long id, int peopleCount);
+        bool CheckEmployeesDrivingLicence(long[] ids);
+        List<RideSharing> GetRidesByEmployeeIdsAndDates(long[] employeeIds, DateTime startDate, DateTime endDate);
         Task<RideViewModel> GetViewModelByIdAsync(long id);
         Task CreateAsync(RideViewModel rideVM);
         Task UpdateAsync(RideViewModel rideVM);
@@ -44,16 +47,38 @@ namespace CarpoolManagement.Core.Services
                 return new SelectListItem { Text = x.EmployeeName, Value = x.Id.ToString() };
             }).ToList();
 
-            return mapRide(dbModel, selectCars, selectEmployees);
+            return MapRide(dbModel, selectCars, selectEmployees);
         }
         public List<RideViewModel> GetRidesByDate (DateTime date)
         {
             var monthStart = new DateTime(date.Year, date.Month, 1);
             var monthEnd = monthStart.AddMonths(1).AddDays(-1);
             var rides = GetAll().Include(x => x.Car).Include(x => x.EmployeeRides).ThenInclude(x => x.Employee).Where(x => x.StartDate.Date <= monthEnd && x.EndDate.Date >= monthStart).ToList();
-            var ridesVM = rides.Select(x => mapRide(x, new List<SelectListItem>(), new List<SelectListItem>())).ToList();
+            var ridesVM = rides.Select(x => MapRide(x, new List<SelectListItem>(), new List<SelectListItem>())).ToList();
 
             return ridesVM;
+        }
+
+        public List<RideSharing> GetRidesByCarIdAndDates(long carId, DateTime startDate, DateTime endDate)
+        {
+            return GetAll().Where(x => x.CarId == carId && x.EndDate >= startDate && x.StartDate <= endDate).ToList();
+        }
+
+        public async Task<bool> CheckCarSeats(long id, int peopleCount)
+        {
+            var car = await dbContext.Carpools.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            if (car != null) return car.NumberOfSeats >= peopleCount;
+            return true;
+        }
+
+        public bool CheckEmployeesDrivingLicence(long[] ids)
+        {
+            return dbContext.Employees.AsNoTracking().Where(x => ids.Contains(x.Id) && x.IsDriver).ToList().Count > 0;
+        }
+
+        public List<RideSharing> GetRidesByEmployeeIdsAndDates(long[] employeeIds, DateTime startDate, DateTime endDate)
+        {
+            return GetAll().Include(x => x.EmployeeRides).Where(x => x.EmployeeRides.Any(y => employeeIds.Contains(y.EmployeeId)) && x.EndDate >= startDate && x.StartDate <= endDate).ToList();
         }
 
         public async Task<RideViewModel> GetViewModelByIdAsync(long id)
@@ -73,31 +98,31 @@ namespace CarpoolManagement.Core.Services
             }).ToList();
             if (ride != null)
             {
-                return mapRide(ride, selectCars, selectEmployees);
+                return MapRide(ride, selectCars, selectEmployees);
             }
             return new RideViewModel();
         }
 
         public async Task CreateAsync(RideViewModel rideVM)
         {
-            var ride = mapRideVM(rideVM);
+            var ride = MapRideVM(rideVM);
             await AddAsync(ride);
         }
 
         public async Task UpdateAsync(RideViewModel rideVM)
         {
-            var ride = mapRideVM(rideVM);
+            var ride = MapRideVM(rideVM);
             await UpdateAsync(ride);
         }
 
         public async Task DeleteAsync(RideViewModel rideVM)
         {
-            var ride = mapRideVM(rideVM);
+            var ride = MapRideVM(rideVM);
             await DeleteAsync(ride);
         }
 
         //TODO: AutoMapper
-        private RideSharing mapRideVM(RideViewModel rideVm)
+        private RideSharing MapRideVM(RideViewModel rideVm)
         {
             var ride = GetEntity();
             ride.Id = rideVm.Id;
@@ -117,7 +142,7 @@ namespace CarpoolManagement.Core.Services
             return ride;
         }
 
-        private RideViewModel mapRide(RideSharing ride, List<SelectListItem> cars, List<SelectListItem> employees)
+        private RideViewModel MapRide(RideSharing ride, List<SelectListItem> cars, List<SelectListItem> employees)
         {
             var employeeNames = ride?.EmployeeRides?.Select(x => x.Employee.EmployeeName) ?? new List<string> { "" };
             return ride.Id > 0 ? new RideViewModel
