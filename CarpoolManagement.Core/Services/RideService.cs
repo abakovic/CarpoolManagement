@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,6 +23,7 @@ namespace CarpoolManagement.Core.Services
         Task CreateAsync(RideViewModel rideVM);
         Task UpdateAsync(RideViewModel rideVM);
         Task DeleteAsync(RideViewModel rideVM);
+        DateTime DateFromMonthlyPicker(string date);
     }
 
     public class RideService : Service<RideSharing>, IRideService
@@ -130,6 +132,10 @@ namespace CarpoolManagement.Core.Services
             var ride = await GetByIdAsync(id);
             if(ride != null) await DeleteAsync(ride);
         }
+
+        public DateTime DateFromMonthlyPicker(string date) =>
+            string.IsNullOrEmpty(date) ? 
+                DateTime.UtcNow : DateTime.ParseExact(date.Replace("\"", "").Split("T")[0], "yyyy-MM-dd", CultureInfo.InvariantCulture).AddMonths(1);
 
         //TODO: AutoMapper
         private RideSharing MapRideVM(RideViewModel rideVm)

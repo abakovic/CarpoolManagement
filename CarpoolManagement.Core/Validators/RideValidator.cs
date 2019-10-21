@@ -24,12 +24,16 @@ namespace CarpoolManagement.Core.Validators
                 .Must((x,y)=> EmployeeDateCheck(x.Id,y ?? new SelectListItem[] { }, x.StartDate, x.EndDate)).WithMessage("One of selected employees is unavailable on selected period.");
         }
 
-        private bool CarDateCheck(long rideId, string id, DateTime startDate, DateTime endDate) => rideService.GetRidesByCarIdAndDates(rideId, id, startDate, endDate).Count == 0;
+        private bool CarDateCheck(long rideId, string id, DateTime startDate, DateTime endDate) =>
+            rideService.GetRidesByCarIdAndDates(rideId, id, startDate, endDate).Count == 0;
 
-        private async Task<bool> CarSeatsCheck(string id, int peopleCount) => await rideService.CheckCarSeats(id, peopleCount);
+        private async Task<bool> CarSeatsCheck(string id, int peopleCount) =>
+            await rideService.CheckCarSeats(id, peopleCount);
 
-        private bool EmployeeLicenceCheck(SelectListItem[] ids) => rideService.CheckEmployeesDrivingLicence(ids);
+        private bool EmployeeLicenceCheck(SelectListItem[] ids) =>
+            rideService.CheckEmployeesDrivingLicence(ids);
 
-        private bool EmployeeDateCheck(long rideId, SelectListItem[] ids, DateTime startDate, DateTime endDate) => rideService.GetRidesByEmployeeIdsAndDates(rideId, ids, startDate, endDate).Count == 0;
+        private bool EmployeeDateCheck(long rideId, SelectListItem[] ids, DateTime startDate, DateTime endDate) =>
+            rideService.GetRidesByEmployeeIdsAndDates(rideId, ids, startDate, endDate).Count == 0;
     }
 }

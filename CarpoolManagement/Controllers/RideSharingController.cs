@@ -1,27 +1,25 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CarpoolManagement.Core.Services;
 using CarpoolManagement.Core.ViewModels;
-using System.Globalization;
 
 namespace CarpoolManagement.Controllers
 {
+    //TODO: manage returns, bind validation messages
     [ApiController]
     [Route("api/[controller]")]
     public class RideSharingController : Controller
     {
         private readonly IRideService rideService;
-        public RideSharingController(IRideService rideService)
-        {
+        public RideSharingController(IRideService rideService) =>
             this.rideService = rideService;
-        }
+        
 
         [HttpGet]
         public IActionResult Index(string date)
         {
-            var now = string.IsNullOrEmpty(date) ? DateTime.UtcNow : DateTime.ParseExact(date, "yyyy/MM/dd hh:mm", CultureInfo.InvariantCulture); ;
+            var now = rideService.DateFromMonthlyPicker(date);
             var rides = rideService.GetRidesByDate(now);
             return Ok(rides);
         }

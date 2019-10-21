@@ -1,7 +1,7 @@
 <template>    
   <div>
     <div class="rem10">
-        <vue-monthly-picker name="monthSelect" @selected="refreshOnSelect" v-model="date" dateFormat="dd/MM/YYYY"></vue-monthly-picker>
+        <vue-monthly-picker name="monthSelect" @selected="refreshOnSelect" v-model="date" dateFormat="MM-YYYY"></vue-monthly-picker>
     </div>
       <table>
           <thead>
@@ -54,7 +54,7 @@ import moment from 'moment'
         },
         methods: {
             moment: function () {
-                return moment();
+                return moment.locale();
             },
             deleteRide : function(id){
                 this.$axios.delete("/api/ridesharing", { params: { id: id } })

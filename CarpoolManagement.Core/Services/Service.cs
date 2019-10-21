@@ -23,16 +23,12 @@ namespace CarpoolManagement.Core.Services
     public class Service<TEntity> : IService<TEntity> where TEntity : class, IEntity
     {
         private readonly CarpoolContext dbContext;
-        public Service(CarpoolContext dbContext)
-        {
+        public Service(CarpoolContext dbContext) =>
             this.dbContext = dbContext;
-        }
 
-        public TEntity GetEntity()
-        {
-            return Activator.CreateInstance<TEntity>();
-        }
-
+        public TEntity GetEntity() =>
+           Activator.CreateInstance<TEntity>();
+        
         public async Task AddAsync(TEntity entity)
         {
             await dbContext.AddAsync(entity);
@@ -70,9 +66,8 @@ namespace CarpoolManagement.Core.Services
                .FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public IQueryable<TEntity> GetAll()
-        {
-            return dbContext.Set<TEntity>().AsNoTracking();
-        }
+        public IQueryable<TEntity> GetAll() =>
+            dbContext.Set<TEntity>().AsNoTracking();
+        
     }
 }

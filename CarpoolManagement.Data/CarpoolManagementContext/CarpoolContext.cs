@@ -6,9 +6,8 @@ namespace CarpoolManagement.Data.CarpoolManagementContext
     public class CarpoolContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            options.UseSqlite("Data Source=ride.db");
-        }
+            => options.UseSqlite("Data Source=ride.db");
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
