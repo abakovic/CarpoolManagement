@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using VueCliMiddleware;
 
 namespace CarpoolManagement
 {
@@ -34,9 +35,17 @@ namespace CarpoolManagement
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation();
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/dist";
+            });
             services.AddDbContext<CarpoolContext>();
             services.AddTransient<IRideService, RideService>();
             services.AddTransient<IValidator<RideViewModel>, RideValidator>();
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,7 +70,17 @@ namespace CarpoolManagement
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=RideSharing}/{action=Index}/{date?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseVueCli(npmScript: "serve", port: 8080);
+                }
             });
 
             SeedData.SeedInitialData();

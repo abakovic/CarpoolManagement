@@ -4919,6 +4919,18 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "VueCliMiddleware/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.SpaServices.Extensions": "2.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/VueCliMiddleware.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/VueCliMiddleware.dll": {}
+        }
+      },
       "CarpoolManagement.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
@@ -13407,6 +13419,18 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
+    "VueCliMiddleware/2.2.1": {
+      "sha512": "XG8Fgv3DnB5x2hTQvdSieD5T7ji8E+JczEFvVL5oke2Op5OGqHkbmYiLx/Td3wkoT7MH/XoQ4fI3i7ReNOrufQ==",
+      "type": "package",
+      "path": "vueclimiddleware/2.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/VueCliMiddleware.dll",
+        "vueclimiddleware.2.2.1.nupkg.sha512",
+        "vueclimiddleware.nuspec"
+      ]
+    },
     "CarpoolManagement.Core/1.0.0": {
       "type": "project",
       "path": "../CarpoolManagement.Core/CarpoolManagement.Core.csproj",
@@ -13425,7 +13449,8 @@
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.0"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.0",
+      "VueCliMiddleware >= 2.2.1"
     ]
   },
   "packageFolders": {
@@ -13496,6 +13521,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[2.2.0, )"
+          },
+          "VueCliMiddleware": {
+            "target": "Package",
+            "version": "[2.2.1, )"
           }
         },
         "imports": [
