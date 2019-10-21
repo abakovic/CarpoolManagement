@@ -46,6 +46,10 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[8.4.0, )"
+            },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
@@ -183,6 +187,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[2.2.0, )"
+            },
+            "VueCliMiddleware": {
+              "target": "Package",
+              "version": "[2.2.1, )"
             }
           },
           "imports": [

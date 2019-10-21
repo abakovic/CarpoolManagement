@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CarpoolManagement.Core.Services;
 using CarpoolManagement.Core.ViewModels;
+using System.Globalization;
 
 namespace CarpoolManagement.Controllers
 {
@@ -20,8 +21,7 @@ namespace CarpoolManagement.Controllers
         [HttpGet]
         public IActionResult Index(string date)
         {
-            date = string.IsNullOrEmpty(date) ? date : date.Split('T')[0];
-            var now = string.IsNullOrEmpty(date) ? DateTime.UtcNow : DateTime.Parse(date);
+            var now = string.IsNullOrEmpty(date) ? DateTime.UtcNow : DateTime.ParseExact(date, "yyyy/MM/dd hh:mm", CultureInfo.InvariantCulture); ;
             var rides = rideService.GetRidesByDate(now);
             return Ok(rides);
         }
